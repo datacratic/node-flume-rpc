@@ -1,11 +1,11 @@
 {
-    "name": "flume-rpc-sink",
-    "description": "flume RPC sink for node.js; allows a node.js process to listen to flume log events",
-    "keywords": ["flume", "sink", "RPC", "logging", "hadoop"],
-    "homepage": "https://github.com/recoset/node-flume-rpc-sink",
+    "name": "flume-rpc",
+    "description": "flume RPC sink and source for node.js; allows a node.js process to interoperate with Apache flume via its RPC mechanism",
+    "keywords": ["flume", "sink", "source", "RPC", "logging", "hadoop"],
+    "homepage": "https://github.com/recoset/node-flume-rpc",
     "repository":
     { "type" : "git",
-      "url" : "git://github.com/recoset/node-flume-rpc-sink.git"
+      "url" : "git://github.com/recoset/node-flume-rpc.git"
     },
     "version": "0.0.1",
     "author":
@@ -20,9 +20,9 @@
     ],
     "bugs":
     { "mail": "jeremy@recoset.com",
-      "web": "https://github.com/recoset/node-flume-rpc-sink/issues"
+      "web": "https://github.com/recoset/node-flume-rpc/issues"
     },
-    "main": "./lib/flume-rpc-sink",
+    "main": "./lib/flume-rpc",
     "engines": { "node": ">= 0.4.0" },
     "dependencies": {
         "thrift" : ">= 0.7.0"
