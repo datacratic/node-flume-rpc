@@ -4,14 +4,17 @@ Source = require('flume-rpc-sink').Source;
 
 console.log(sys.inspect(require('flume-rpc-sink')));
 
-var sink = new Sink();
-sink.on('message', function (msg) { console.log('got message: ',
-                                                sys.inspect(msg)); });
 var source;
+var sink = new Sink();
 
+function onMessage(msg)
+{
+    console.log('got message: ', sys.inspect(msg));
+    sink.close();
+    source.close();
+}
 
-sink.on('listening', onListenDone);
-sink.listen(9090, onListenDone);
+sink.on('message', onMessage);
 
 function onListenDone()
 {
@@ -19,6 +22,9 @@ function onListenDone()
     source = new Source('localhost', 9090);
     source.on('connect', doSend);
 }
+
+sink.on('listening', onListenDone);
+sink.listen(9090, onListenDone);
 
 function doSend()
 {
