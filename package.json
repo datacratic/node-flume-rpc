@@ -7,7 +7,7 @@
     { "type" : "git",
       "url" : "git://github.com/recoset/node-flume-rpc.git"
     },
-    "version": "0.0.1",
+    "version": "0.0.2",
     "author":
     { "name": "Jeremy Barnes",
       "email": "jeremy@recoset.com",
