@@ -10,24 +10,25 @@ flume and some other node.js-based process.
 
 ## Synopsis
 
-   var FlumeRPCSink = require('flume-rpc-sink').FlumeRPCSink;
-   var sink = new FlumeRPCSink;
-   sink.on('message', function(msg) { console.log(msg.body); });
-   sink.on('close', function(success) { this.close();  success(); });
-   sink.listen(35861);  // this is the default flume RPC port
+    var FlumeRPCSink = require('flume-rpc-sink').FlumeRPCSink;
+    var sink = new FlumeRPCSink;
+    sink.on('message', function(msg) { console.log(msg.body); });
+    sink.on('close', function(success) { this.close();  success(); });
+    sink.listen(35861);  // this is the default flume RPC port
 
 To test (assuming there's a properly set up flume instance running):
 
-   echo "hello" | flume sink 'rpcSink("localhost")'
+    echo "hello" | flume sink 'rpcSink("localhost")'
 
 ## Message format
 
-  { timestamp: 1529023563,
-    priority: 3,
-    body: 'hello',
-    nanos: 2506809501,
-    host: 'host.name.com',
-    fields: {} }
+    { timestamp: 1529023563,
+      nanos: 2506809501,
+      priority: 3,
+      body: 'hello',
+      host: 'host.name.com',
+      fields: {}
+    }
 
 ## Dependencies
 
@@ -37,5 +38,5 @@ transport to be set).
 
 ## Development
 
-TODO: list commands used to regenerate thrift bindings
-TODO: discussion of selection of different transport
+* TODO: list commands used to regenerate thrift bindings
+* TODO: discussion of selection of different transport
