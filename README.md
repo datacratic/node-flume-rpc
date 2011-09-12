@@ -49,18 +49,101 @@ To test (assuming there's a properly set up flume instance running):
 
 and then run the script above.
 
+## Sink Reference
 
-## Message format
+### Accessing
+
+    var flume = require('flume-rpc');
+    var Sink = flume.Sink;
+
+
+### Creating a Sink
+
+    var sink = new Sink;
+
+There are no constructor arguments; the configuration is done later on.
+
+### Listening for messages
+
+    sink.listen(port, [hostname], [callback]);
+
+This method will listen on the given port, binding to the given hostname.
+For the moment, for some unknown reason, the callback argument won't
+actually be called on a successful bind; you should use the 'listen'
+event instead.  On an error, the 'error' event will be emitted.
+
+
+### Closing down the sink
+
+    sink.close();
+    
+This will close down the sink, asynchronously.  The 'close' event will be
+emitted once it's finished shutdown.
+
+
+### Getting log messages
+
+    sink.on('message', function (msg) { ... });
+
+Registers a handle to be called whenever a message is received.
+
+
+### Responding to an RPC close request
+
+As part of the protocol, a source can ask its sink to close via RPC.
+Personally, I haven't found a use for this but it's exposed nonetheless.
+
+    sink.on('rpcClose', function (onSuccess) { ... ; onSuccess(); });
+
+The onSuccess() function should be called back once the close has succeeded.
+TODO: errors?
+
+#### Message format
 
 The sink receives messages that look like this:
 
-    { timestamp: 1529023563,
-      nanos: 2506809501,
-      priority: 3,
-      body: 'hello',
-      host: 'host.name.com',
-      fields: {}
+    { timestamp: 1529023563,     // Timestamp in seconds
+      nanos: 2506809501,         // nanosecond part of timestamp
+      priority: 3,               // see flume.Priority for values
+      body: 'hello',             // string or Buffer containing the data from the body
+      host: 'host.name.com',     // host that it came from
+      fields: {}                 // metadata associated with the event
     }
+
+The fields structure may contain more information if the flume flow that
+produced the message is more complicated.
+
+
+### Other Events
+
+    sink.on('error', function (err) { ... });
+    
+Called with the details of an error when one occurs.
+    
+    sink.on('connection', function (sock) { ... });
+    
+Called with the created socket once a connection is made (something
+connects to the sink).  See http://nodejs.org/docs/v0.4.9/api/net.html#event_connection_
+    
+    sink.on('listening', function () { ... });
+    
+Called once the socket is bound and has started listening.
+    
+    sink.on('close', function () { ... });
+
+Called when the server closes.  See http://nodejs.org/docs/v0.4.9/api/net.html#event_close_
+
+### Accessing the underlying server
+
+These are not part of the API, but are exposed.
+
+    sink.server
+
+This is ths server created by Thrift.  It's derived from net.Server.
+
+
+## Source Reference
+
 
 ## Dependencies
 
