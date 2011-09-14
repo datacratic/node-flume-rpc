@@ -25,7 +25,7 @@ a fork of that project with the appropriate fixes in it; in order to
 install that you need to get the patched version at
 https://github.com/recoset/node-thrift.  To do this, run
 
-   npm install http://github.com/recoset/node-thrift/tarball/v0.7.0-recoset
+    npm install http://github.com/recoset/node-thrift/tarball/v0.7.0-recoset
    
 I'll update this readme once the fixes have been merged and a new release
 made.
