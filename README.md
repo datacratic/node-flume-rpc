@@ -17,6 +17,18 @@ Be warned: it's highly alpha at the moment.
 
     npm install flume-rpc
 
+Please note that there are bugs in the latest version of node-thrift
+(0.7.0) that cause the sink to throw exceptions under load and/or to suddenly
+jam up and eventually run out of memory.  Please see
+https://github.com/wadey/node-thrift/pull/13 for details.  I have created
+a fork of that project with the appropriate fixes in it; in order to
+install that you need to get the patched version at
+https://github.com/recoset/node-thrift.  To do this, run
+
+   npm install http://github.com/recoset/node-thrift/tarball/v0.7.0-recoset
+   
+I'll update this readme once the fixes have been merged and a new release
+made.
 
 ## Synopsis (Sink)
 
