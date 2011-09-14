@@ -7,7 +7,7 @@
     { "type" : "git",
       "url" : "git://github.com/recoset/node-flume-rpc.git"
     },
-    "version": "0.0.2",
+    "version": "0.0.3",
     "author":
     { "name": "Jeremy Barnes",
       "email": "jeremy@recoset.com",
@@ -25,7 +25,7 @@
     "main": "./lib/flume-rpc",
     "engines": { "node": ">= 0.4.0" },
     "dependencies": {
-        "thrift" : ">= 0.7.0"
+        "thrift" : ">= 0.7.1 || 0.7.0-recoset"
     },
     "scripts": {
         "test": "node test/flume_rpc_test.js"
