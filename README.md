@@ -1,3 +1,4 @@
+[![build status](https://secure.travis-ci.org/recoset/node-flume-rpc.png)](http://travis-ci.org/recoset/node-flume-rpc)
 # node-flume-rpc
 
 This allows a very simple node.js endpoint to be setup that will receive
