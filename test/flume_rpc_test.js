@@ -1,4 +1,4 @@
-var sys = require('sys'),
+var util = require('util'),
 Sink = require('flume-rpc').Sink,
 Source = require('flume-rpc').Source;
 
@@ -7,7 +7,7 @@ var sink = new Sink();
 
 function onMessage(msg)
 {
-    console.log('got message: ', sys.inspect(msg));
+    console.log('got message: ', util.inspect(msg));
     sink.close();
     source.close();
 }
@@ -28,7 +28,7 @@ function doSend()
 {
     function doneSend(err)
     {
-        console.log('done logging: ' + sys.inspect(err));
+        console.log('done logging: ' + util.inspect(err));
     }
 
     source.log('hello', doneSend);
